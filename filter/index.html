@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>滤镜filter</title>
+  <style>
+    .card {
+      border: 1px solid #999999;
+      padding: 20px;
+      margin: 10px;
+    }
+    img{
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div class="card">
+      <div>原图</div>
+      <img src="./1.jpg" alt="">
+    </div>
+    <div class="card">
+      <div>blur模糊</div>
+      <img src="./1.jpg" alt="">
+      <input type="range" value='0' min="0" max="100" onchange="blurChange()" id="blur" step="1" style="width: 200px">
+      <span id='blurValue'>模糊度数:0</span>
+    </div>
+    <div class="card">
+      <div>brightness亮度</div>
+      <img src="./1.jpg" alt="">
+      <input type="range" value='100' min="0" max="800" onchange="brightnessChange()" id="brightness" step="1"
+        style="width: 200px">
+      <span id='brightnessValue'>亮度度数:100%</span>
+    </div>
+    <div class="card">
+      <div>contrast对比度</div>
+      <img src="./1.jpg" alt="">
+      <input type="range" value='100' min="0" max="800" onchange="contrastChange()" id="contrast" step="1"
+        style="width: 200px">
+      <span id='contrastValue'>对比度度数:100%</span>
+    </div>
+    <div class="card">
+      <div>grayscale灰度</div>
+      <img src="./1.jpg" alt="">
+      <input type="range" value='0' min="0" max="100" onchange="grayscaleChange()" id="grayscale" step="1"
+        style="width: 200px">
+      <span id='grayscaleValue'>灰度度数:0%</span>
+    </div>
+    <div class="card">
+      <div>hue-rotate 色相旋转</div>
+      <img src="./1.jpg" alt="">
+      <input type="range" value='0' min="0" max="360" onchange="rotateChange()" id="rotate" step="1"
+        style="width: 200px">
+      <span id='rotateValue'>色相旋转度数:0deg</span>
+    </div>
+    <div class="card">
+      <div>invert 反向输入图像</div>
+      <img src="./1.jpg" alt="">
+      <input type="range" value='0' min="0" max="100" onchange="invertChange()" id="invert" step="1"
+        style="width: 200px">
+      <span id='invertValue'>反向输入图像度数:0%</span>
+    </div>
+    <div class="card">
+      <div>opacity 透明度</div>
+      <img src="./1.jpg" alt="">
+      <input type="range" value='100' min="0" max="100" onchange="opacityChange()" id="opacity" step="1"
+        style="width: 200px">
+      <span id='opacityValue'>透明度度数:100%</span>
+    </div>
+    <div class="card">
+      <div>saturate 饱和度</div>
+      <img src="./1.jpg" alt="">
+      <input type="range" value='100' min="0" max="800" onchange="saturateChange()" id="saturate" step="1"
+        style="width: 200px">
+      <span id='saturateValue'>饱和度度数:100%</span>
+    </div>
+    <div class="card">
+      <div>sepia 转为深褐色</div>
+      <img src="./1.jpg" alt="">
+      <input type="range" value='0' min="0" max="100" onchange="sepiaChange()" id="sepia" step="1" style="width: 200px">
+      <span id='sepiaValue'>转为深褐色度数:0%</span>
+    </div>
+  </div>
+  <script>
+    var doc = document.getElementsByTagName('img')
+    // 模糊度数的onChange函数
+    function blurChange() {
+      var value = document.getElementById('blur').value
+      doc[1].style.filter = 'blur(' + value + 'px)'
+      document.getElementById('blurValue').innerHTML = '模糊度数:' + value + 'px'
+    }
+    // 亮度度数的onChange函数
+    function brightnessChange() {
+      var value = document.getElementById('brightness').value
+      doc[2].style.filter = 'brightness(' + value + '%)'
+      document.getElementById('brightnessValue').innerHTML = '亮度度数:' + value + '%'
+    }
+    // 对比度度数的onChange函数
+    function contrastChange() {
+      var value = document.getElementById('contrast').value
+      doc[3].style.filter = 'contrast(' + value + '%)'
+      document.getElementById('contrastValue').innerHTML = '对比度度数:' + value + '%'
+    }
+    // 灰度度数的onChange函数
+    function grayscaleChange() {
+      var value = document.getElementById('grayscale').value
+      doc[4].style.filter = 'grayscale(' + value + '%)'
+      document.getElementById('grayscaleValue').innerHTML = '灰度度数:' + value + '%'
+    }
+    // 色相旋转度数的onChange函数
+    function rotateChange() {
+      var value = document.getElementById('rotate').value
+      doc[5].style.filter = 'hue-rotate(' + value + 'deg)'
+      document.getElementById('rotateValue').innerHTML = '色相旋转度数:' + value + 'deg'
+    }
+    // 反向输入图像度数的onChange函数
+    function invertChange() {
+      var value = document.getElementById('invert').value
+      doc[6].style.filter = 'invert(' + value + '%)'
+      document.getElementById('invertValue').innerHTML = '反向输入图像度数:' + value + '%'
+    }
+    // 透明度数的onChange函数
+    function opacityChange() {
+      var value = document.getElementById('opacity').value
+      doc[7].style.filter = 'opacity(' + value + '%)'
+      document.getElementById('opacityValue').innerHTML = '透明度数:' + value + '%'
+    }
+    // 饱和度度数的onChange函数
+    function saturateChange() {
+      var value = document.getElementById('saturate').value
+      doc[8].style.filter = 'saturate(' + value + '%)'
+      document.getElementById('saturateValue').innerHTML = '饱和度度数:' + value + '%'
+    }
+    // 转为深褐色度数的onChange函数
+    function sepiaChange() {
+      var value = document.getElementById('sepia').value
+      doc[9].style.filter = 'sepia(' + value + '%)'
+      document.getElementById('sepiaValue').innerHTML = '转为深褐色度数:' + value + '%'
+    }
+  </script>
+</body>
+
+</html>
