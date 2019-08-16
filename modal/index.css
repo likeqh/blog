@@ -2,9 +2,9 @@
  * @Author: Evan.Zengdp 
  * @Date: 2019-08-16 10:45:00 
  * @Last Modified by: Evan.Zengdp
- * @Last Modified time: 2019-08-16 11:11:34
+ * @Last Modified time: 2019-08-16 15:32:28
  */
-.modal-wrapper {
+ .modal-wrapper {
     position: absolute;
     left: 0;
     top: 0;
@@ -21,9 +21,10 @@
 
 .modal-content {
     position: absolute;
+    display: block;
     left: 50%;
     top: 40%;
-    width: 80%;
+    width: 60%;
     max-width: 600px;
     border: 2px solid #ccc;
     border-radius: 10px;
@@ -31,23 +32,24 @@
     transform: translate(-50%, -50%);
     overflow: hidden;
     background: #fff;
+    z-index: 100;
 }
 
 .modal-content-title {
     width: 100%;
     text-align: center;
-    font-size: 36px;
-    padding-top: 60px;
-    padding-bottom: 50px;
+    font-size: 32px;
+    padding-top: 30px;
+    padding-bottom: 25px;
 }
 
 .modal-content-con {
-    font-size: 30px;
+    font-size: 20px;
     font-family: PingFang-SC-Medium;
     font-weight: 500;
     color: rgba(102, 102, 102, 1);
-    line-height: 45px;
-    padding: 0 81px 43px 82px;
+    line-height: 20px;
+    padding: 0 41px 30px 42px;
 }
 
 .modal-content-btn {
@@ -61,7 +63,7 @@
     justify-content: center;
     border-radius: 5px;
     padding: 5px 25px;
-    font-size: 32px;
+    font-size: 18px;
     font-family: PingFang-SC-Bold;
     font-weight: bold;
     margin-bottom: 10px;
