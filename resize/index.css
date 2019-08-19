@@ -1,0 +1,38 @@
+.example{
+    overflow: auto;
+    resize: both;
+    color: red;
+    border: 1px solid black;
+    width: 300px;
+}
+.float{
+    float: right;
+    width: 50px;
+    height: 50px;
+    border: 1px solid red;
+}
+.position1{
+    position: relative;
+    top: 20px;
+    border: 1px solid skyblue;
+}
+.text{
+    overflow: auto;
+    resize: both;
+}
+/* IE */
+textarea {
+    vertical-align: top;
+    box-sizing: border-box;
+    resize: none;
+    overflow: auto;
+}
+textarea[resize] {
+    resize: both;    
+}
+textarea[resize="vertical"] {
+    resize: vertical;    
+}
+textarea[resize="horizontal"] {
+    resize: both;
+}

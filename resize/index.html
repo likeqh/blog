@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户调整元素尺寸resize的使用</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <p>resize,用户可以自己调整元素的大小尺寸
+        <ul>
+            <li>使用时，需设置overflow为auto，hidden或scroll</li>
+            <li>不支持IE</li>
+            <li>resize内的元素不要设置脱离文档流类元素，如position:absolute</li>
+        </ul>
+    </p>
+    <h5>可以调整尺寸的div</h5>
+    <div class="example">
+        这是一个可以自由调整大小尺寸的div
+        <p>这是一个可以自由调整大小尺寸的div</p>
+        <div class="float">float</div>
+        <div class="position1">这是position1</div>
+    </div>
+    <h5>可以调整尺寸的textarea</h5>
+    <textarea name="" id="" cols="30" rows="10" class="text"></textarea>
+    <h5>使用js使IE的textarea可以调整尺寸</h5>
+    <textarea resize="both" cols="30" rows="10"></textarea>
+    <p>resize-polyfill.js是由张鑫旭大神写的，具体可以查看https://www.zhangxinxu.com/wordpress/2019/08/ie-edge-textarea-resize-polyfill/
+    </p>
+    <ul>
+        <li>IE9及其以上浏览器支持。</li>
+        <li>目前只支持textarea元素，普通元素的resize拉伸没有支持，实际开发很少使用，没必要支持。如果你非要支持，可以修改resize-polyfill.js，把其中的'textarea[resize]'选择器换一换就可以了。</li>
+        <li>实际开发场景千千万，我写的这个resize-polyfill.js肯定不能覆盖所有的场景，大家就中规中矩使用就好，建议textarea元素保持block块级，比较不容易出现细节问题。</li>
+    </ul>
+    <script src="./resize-polyfill.js"></script>
+</body>
+
+</html>
