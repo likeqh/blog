@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>gaode_heatmap</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css" />
+    <script src="http://webapi.amap.com/maps?v=1.4.3&key=60d4634515d0206931c19dc552d6f7a1"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script>
+        // 模拟数据
+        var points = [{
+                lat: 31.95266,
+                lng: 118.84002,
+                count: 10,
+                title: '测试1'
+            },
+            {
+                lat: 31.92266,
+                lng: 118.84002,
+                count: 20,
+                title: '测试2'
+            },
+            {
+                lat: 32.086865908,
+                lng: 118.79769709,
+                count: 5,
+                title: '测试3'
+            },
+            {
+                lat: 31.9687296,
+                lng: 118.798171148,
+                count: 7,
+                title: '测试4'
+            },
+            {
+                lat: 32.05895,
+                lng: 118.628161,
+                count: 15,
+                title: '测试5'
+            },
+            {
+                lat: 31.987914,
+                lng: 118.733302,
+                count: 35,
+                title: '测试6'
+            },
+            {
+                lat: 32.052875011,
+                lng: 118.622278017,
+                count: 55,
+                title: '测试7'
+            },
+        ];
+        window.onload = function () {
+            heatMap();
+        }
+
+        function heatMap() {
+            var markers = [];
+            var heatmap;
+            //初始化设置地图
+            var map = new AMap.Map("container", {
+                resizeEnable: true,
+                center: [118.79647, 32.05838], //当前位置:南京。
+                zoom: 11, //初始化缩放级别 [0,20]
+                mapStyle: 'amap://styles/macaron', //设置地图的显示样式
+                enableMapClick: false
+            });
+            if (!isSupportCanvas()) {
+                alert('热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~')
+            }
+            // 设置marker标记
+            // points 为假数据
+            for (var i = 0; i < points.length; i += 1) {
+                var marker;
+                marker = new AMap.Marker({
+                    position: [points[i].lng, points[i].lat],
+                    title: points[i].title,
+                    map: map
+                });
+                markers.push(marker);
+            }
+            map.setFitView();
+            //创建热力点数据（上线请设置为实际业务数据）
+            //创建heatmap对象实例（设置热力点样式，如大小，透明度等）
+            map.plugin(["AMap.Heatmap"], function () {
+                //初始化heatmap对象
+                heatmap = new AMap.Heatmap(map, {
+                    //visible:true,         //visible 热力图是否显示,默认为true
+                    //backgroundColor:rgba(0,102,256,0.2),          //画板的背景颜色设置，支持rgb(a)，颜色名称，但必须要用引号
+                    radius: 25, //热力图的每个点的半径大小   [0,+∞)
+                    opacity: [0, 0.8], //热力图的透明度,分别对应heatmap.js的minOpacity和maxOpacity
+                    gradient: { //热力图的颜色渐变区间。   {JSON}:key 插值的位置, 0-1;  value颜色值 
+                        0.5: 'blue',
+                        0.65: 'rgb(117,211,248)',
+                        0.7: 'rgb(0, 255, 0)',
+                        0.9: '#ffea00',
+                        1.0: 'red'
+                    }
+                });
+                //设置数据集(把热力图数据放到地图上)
+                heatmap.setDataSet({
+                    data: points,
+                    max: 10,//热点的count比max的值小 就讲显示淡色
+                });
+            })
+        }
+        //判断浏览区是否支持canvas
+        function isSupportCanvas() {
+            var elem = document.createElement('canvas');
+            return !!(elem.getContext && elem.getContext('2d'));
+        }
+    </script>
+
+</body>
+
+</html>
