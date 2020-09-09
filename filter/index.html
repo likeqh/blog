@@ -30,6 +30,7 @@
       <img src="./1.jpg" alt="">
       <input type="range" value='0' min="0" max="100" onchange="blurChange()" id="blur" step="1" style="width: 200px">
       <span id='blurValue'>模糊度数:0</span>
+      <div style="display: inline-block;margin-left: 50px;" id='blurCss'>样式的Css代码:filter:blur(0px)</div>
     </div>
     <div class="card">
       <div>brightness亮度</div>
@@ -37,6 +38,7 @@
       <input type="range" value='100' min="0" max="800" onchange="brightnessChange()" id="brightness" step="1"
         style="width: 200px">
       <span id='brightnessValue'>亮度度数:100%</span>
+      <div style="display: inline-block;margin-left: 50px;" id='brightnessCss'>样式的Css代码:filter:brightness(0%)</div>
     </div>
     <div class="card">
       <div>contrast对比度</div>
@@ -44,6 +46,7 @@
       <input type="range" value='100' min="0" max="800" onchange="contrastChange()" id="contrast" step="1"
         style="width: 200px">
       <span id='contrastValue'>对比度度数:100%</span>
+      <div style="display: inline-block;margin-left: 50px;" id='contrastCss'>样式的Css代码:filter:contrast(0%)</div>
     </div>
     <div class="card">
       <div>grayscale灰度</div>
@@ -51,6 +54,7 @@
       <input type="range" value='0' min="0" max="100" onchange="grayscaleChange()" id="grayscale" step="1"
         style="width: 200px">
       <span id='grayscaleValue'>灰度度数:0%</span>
+      <div style="display: inline-block;margin-left: 50px;" id='grayscaleCss'>样式的Css代码:filter:grayscale(0%)</div>
     </div>
     <div class="card">
       <div>hue-rotate 色相旋转</div>
@@ -58,6 +62,7 @@
       <input type="range" value='0' min="0" max="360" onchange="rotateChange()" id="rotate" step="1"
         style="width: 200px">
       <span id='rotateValue'>色相旋转度数:0deg</span>
+      <div style="display: inline-block;margin-left: 50px;" id='rotateCss'>样式的Css代码:filter:hue-rotate(0deg)</div>
     </div>
     <div class="card">
       <div>invert 反向输入图像</div>
@@ -65,6 +70,7 @@
       <input type="range" value='0' min="0" max="100" onchange="invertChange()" id="invert" step="1"
         style="width: 200px">
       <span id='invertValue'>反向输入图像度数:0%</span>
+      <div style="display: inline-block;margin-left: 50px;" id='invertCss'>样式的Css代码:filter:invert(0%)</div>
     </div>
     <div class="card">
       <div>opacity 透明度</div>
@@ -72,6 +78,7 @@
       <input type="range" value='100' min="0" max="100" onchange="opacityChange()" id="opacity" step="1"
         style="width: 200px">
       <span id='opacityValue'>透明度度数:100%</span>
+      <div style="display: inline-block;margin-left: 50px;" id='opacityCss'>样式的Css代码:filter:opacity(0%)</div>
     </div>
     <div class="card">
       <div>saturate 饱和度</div>
@@ -79,12 +86,14 @@
       <input type="range" value='100' min="0" max="800" onchange="saturateChange()" id="saturate" step="1"
         style="width: 200px">
       <span id='saturateValue'>饱和度度数:100%</span>
+      <div style="display: inline-block;margin-left: 50px;" id='saturateCss'>样式的Css代码:filter:saturate(0%)</div>
     </div>
     <div class="card">
       <div>sepia 转为深褐色</div>
       <img src="./1.jpg" alt="">
       <input type="range" value='0' min="0" max="100" onchange="sepiaChange()" id="sepia" step="1" style="width: 200px">
       <span id='sepiaValue'>转为深褐色度数:0%</span>
+      <div style="display: inline-block;margin-left: 50px;" id='sepiaCss'>样式的Css代码:filter:sepia(0%)</div>
     </div>
   </div>
   <script>
@@ -94,54 +103,63 @@
       var value = document.getElementById('blur').value
       doc[1].style.filter = 'blur(' + value + 'px)'
       document.getElementById('blurValue').innerHTML = '模糊度数:' + value + 'px'
+      document.getElementById('blurCss').innerHTML = '样式的Css代码:filter:blur(' + value + 'px)'
     }
     // 亮度度数的onChange函数
     function brightnessChange() {
       var value = document.getElementById('brightness').value
       doc[2].style.filter = 'brightness(' + value + '%)'
       document.getElementById('brightnessValue').innerHTML = '亮度度数:' + value + '%'
+      document.getElementById('brightnessCss').innerHTML = '样式的Css代码:filter:brightness(' + value + '%)'
     }
     // 对比度度数的onChange函数
     function contrastChange() {
       var value = document.getElementById('contrast').value
       doc[3].style.filter = 'contrast(' + value + '%)'
       document.getElementById('contrastValue').innerHTML = '对比度度数:' + value + '%'
+      document.getElementById('contrastCss').innerHTML = '样式的Css代码:filter:contrast(' + value + '%)'
     }
     // 灰度度数的onChange函数
     function grayscaleChange() {
       var value = document.getElementById('grayscale').value
       doc[4].style.filter = 'grayscale(' + value + '%)'
       document.getElementById('grayscaleValue').innerHTML = '灰度度数:' + value + '%'
+      document.getElementById('grayscaleCss').innerHTML = '样式的Css代码:filter:grayscale(' + value + '%)'
     }
     // 色相旋转度数的onChange函数
     function rotateChange() {
       var value = document.getElementById('rotate').value
       doc[5].style.filter = 'hue-rotate(' + value + 'deg)'
       document.getElementById('rotateValue').innerHTML = '色相旋转度数:' + value + 'deg'
+      document.getElementById('rotateCss').innerHTML = '样式的Css代码:filter:rotate(' + value + 'deg)'
     }
     // 反向输入图像度数的onChange函数
     function invertChange() {
       var value = document.getElementById('invert').value
       doc[6].style.filter = 'invert(' + value + '%)'
       document.getElementById('invertValue').innerHTML = '反向输入图像度数:' + value + '%'
+      document.getElementById('invertCss').innerHTML = '样式的Css代码:filter:invert(' + value + '%)'
     }
     // 透明度数的onChange函数
     function opacityChange() {
       var value = document.getElementById('opacity').value
       doc[7].style.filter = 'opacity(' + value + '%)'
       document.getElementById('opacityValue').innerHTML = '透明度数:' + value + '%'
+      document.getElementById('opacityCss').innerHTML = '样式的Css代码:filter:opacity(' + value + '%)'
     }
     // 饱和度度数的onChange函数
     function saturateChange() {
       var value = document.getElementById('saturate').value
       doc[8].style.filter = 'saturate(' + value + '%)'
       document.getElementById('saturateValue').innerHTML = '饱和度度数:' + value + '%'
+      document.getElementById('saturateCss').innerHTML = '样式的Css代码:filter:saturate(' + value + '%)'
     }
     // 转为深褐色度数的onChange函数
     function sepiaChange() {
       var value = document.getElementById('sepia').value
       doc[9].style.filter = 'sepia(' + value + '%)'
       document.getElementById('sepiaValue').innerHTML = '转为深褐色度数:' + value + '%'
+      document.getElementById('sepiaCss').innerHTML = '样式的Css代码:filter:sepia(' + value + '%)'
     }
   </script>
 </body>
